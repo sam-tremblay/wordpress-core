@@ -1,3 +1,5 @@
+> :warning: **This is only the detached part you download with Gate Project**
+
 Gate version: 1.0.8
 
 Download: https://github.com/sam-tremblay/Gate
