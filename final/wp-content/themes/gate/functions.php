@@ -2,7 +2,7 @@
 
 if (!defined('ABSPATH')) exit;
 
-if (!defined('GT_VERSION')) define('GT_VERSION', '1.0.8');
+if (!defined('GT_VERSION')) define('GT_VERSION', '1.0.9');
 
 class gc{
 
