@@ -7,7 +7,7 @@ Description: Vous donne le contrôle de votre SEO WordPress.
 Requires at least: 5.9
 Tested up to: 5.9
 Requires PHP: 7.3
-Version: 1.2.1
+Version: 1.3
 License: MIT License
 License URI: https://github.com/sam-tremblay/Gate/blob/master/LICENSE
 Text Domain: is-gate-seo
@@ -16,7 +16,7 @@ Text Domain: is-gate-seo
 if (!defined('ABSPATH')) exit;
 
 
-if (!defined('IGS_VERSION')) define('IGS_VERSION', '1.2.1');
+if (!defined('IGS_VERSION')) define('IGS_VERSION', '1.3');
 
 
 if (!class_exists('isGateSEO')){
@@ -334,14 +334,23 @@ if (!class_exists('isGateSEO')){
 					$html .= '<meta name="msapplication-TileColor" content="#0000">';
 				}
 
+
+				echo $html;
+			}, 1);
+
+
+			add_action('wp_head', function(){
+
 				if(self::analytics()){
-					$html .= '<script async src="https://www.googletagmanager.com/gtag/js?id='. self::analytics() .'"></script>';
+					$html = '<script async src="https://www.googletagmanager.com/gtag/js?id='. self::analytics() .'"></script>';
 					$html .= '<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag("js", new Date());gtag("config", "'. self::analytics() .'");</script>';
+
+					echo $html;
 				}
 
 
-				echo $html;
-			}, 2);
+				return;
+			}, 99);
 
 		}
 

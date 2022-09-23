@@ -2,7 +2,7 @@
 
 if (!defined('ABSPATH')) exit;
 
-if (!defined('GT_VERSION')) define('GT_VERSION', '1.0.9');
+if (!defined('GT_VERSION')) define('GT_VERSION', '1.1.0');
 
 class gc{
 
@@ -26,67 +26,72 @@ class gc{
 			*/
 			wp_dequeue_style('wp-block-library');
 			wp_dequeue_style('global-styles');
-
 			
+
 			/*
-			* Add Main Styles to Head
+			* Add Styles in head
+			*
+			* All In One File
 			*/
-			wp_enqueue_style('gate-main', get_bloginfo('stylesheet_directory').'/assets/css/main.min.css', null, null, null);
-			
+			wp_register_style('gate-all-in-one', get_bloginfo('stylesheet_directory').'/assets/css/all-in-one.min.css', null, null, null);
 
 			/*
-			* Register Font Awesome
+			* Font Awesome
 			*/
 			wp_register_style('gate-font-awesome', get_template_directory_uri().'/assets/css/fontawesome.min.css', null, null, null);
 
-
 			/*
-			* Register All In One
+			* Main Styles
 			*/
-			wp_register_style('gate-all-in-one', get_bloginfo('stylesheet_directory').'/assets/css/all-in-one.min.css', null, null, null);
-			wp_register_script('gate-all-in-one', get_bloginfo('stylesheet_directory').'/assets/js/all-in-one.min.js', null, null, null);
-
-
-			/*
-			* Register Jquery
-			*/
-			wp_register_script('gate-jquery', get_template_directory_uri().'/assets/js/jquery.min.js', null, null, null);
-			wp_register_script('gate-jquery-mask', get_template_directory_uri().'/assets/js/jquery.mask.min.js', null, null, null);
-
-
-			/*
-			* Register Gsap Scripts
-			*/
-			wp_register_script('gate-gsap-core', get_template_directory_uri().'/assets/js/gsap/gsap.min.js', null, null, null);
-			wp_register_script('gate-gsap-css-rule', get_template_directory_uri().'/assets/js/gsap/CSSRulePlugin.min.js', null, null, null);
-			wp_register_script('gate-gsap-custom-bounce', get_template_directory_uri().'/assets/js/gsap/CustomBounce.min.js', null, null, null);
-			wp_register_script('gate-gsap-custom-ease', get_template_directory_uri().'/assets/js/gsap/CustomEase.min.js', null, null, null);
-			wp_register_script('gate-gsap-custom-wiggle', get_template_directory_uri().'/assets/js/gsap/CustomWiggle.min.js', null, null, null);
-			wp_register_script('gate-gsap-draggable', get_template_directory_uri().'/assets/js/gsap/Draggable.min.js', null, null, null);
-			wp_register_script('gate-gsap-draw-svg', get_template_directory_uri().'/assets/js/gsap/DrawSVGPlugin.min.js', null, null, null);
-			wp_register_script('gate-gsap-easel', get_template_directory_uri().'/assets/js/gsap/EaselPlugin.min.js', null, null, null);
-			wp_register_script('gate-gsap-ease-pack', get_template_directory_uri().'/assets/js/gsap/EasePack.min.js', null, null, null);
-			wp_register_script('gate-gsap-flip', get_template_directory_uri().'/assets/js/gsap/Flip.min.js', null, null, null);
-			wp_register_script('gate-gsap-gs-dev-tools', get_template_directory_uri().'/assets/js/gsap/GSDevTools.min.js', null, null, null);
-			wp_register_script('gate-gsap-inertia', get_template_directory_uri().'/assets/js/gsap/InertiaPlugin.min.js', null, null, null);
-			wp_register_script('gate-gsap-morph-svg', get_template_directory_uri().'/assets/js/gsap/MorphSVGPlugin.min.js', null, null, null);
-			wp_register_script('gate-gsap-motion-path', get_template_directory_uri().'/assets/js/gsap/MotionPathPlugin.min.js', null, null, null);
-			wp_register_script('gate-gsap-motion-path-helper', get_template_directory_uri().'/assets/js/gsap/MotionPathHelper.min.js', null, null, null);
-			wp_register_script('gate-gsap-observer', get_template_directory_uri().'/assets/js/gsap/Observer.min.js', null, null, null);
-			wp_register_script('gate-gsap-physics-2d', get_template_directory_uri().'/assets/js/gsap/Physics2DPlugin.min.js', null, null, null);
-			wp_register_script('gate-gsap-physics-props', get_template_directory_uri().'/assets/js/gsap/PhysicsPropsPlugin.min.js', null, null, null);
-			wp_register_script('gate-gsap-pixi', get_template_directory_uri().'/assets/js/gsap/PixiPlugin.min.js', null, null, null);
-			wp_register_script('gate-gsap-scramble-text', get_template_directory_uri().'/assets/js/gsap/ScrambleTextPlugin.min.js', null, null, null);
-			wp_register_script('gate-gsap-scroll-smoother', get_template_directory_uri().'/assets/js/gsap/ScrollSmoother.min.js', null, null, null);
-			wp_register_script('gate-gsap-scroll-to', get_template_directory_uri().'/assets/js/gsap/ScrollToPlugin.min.js', null, null, null);
-			wp_register_script('gate-gsap-scroll-trigger', get_template_directory_uri().'/assets/js/gsap/ScrollTrigger.min.js', null, null, null);
-			wp_register_script('gate-gsap-text-split', get_template_directory_uri().'/assets/js/gsap/SplitText.min.js', null, null, null);
-			wp_register_script('gate-gsap-text', get_template_directory_uri().'/assets/js/gsap/TextPlugin.min.js', null, null, null);
+			wp_enqueue_style('gate-main', get_bloginfo('stylesheet_directory').'/assets/css/main.min.css', null, null, null);
 
 
 			/*
 			* Add Scripts in Footer
+			*
+			* All In One File
 			*/
+			wp_register_script('gate-all-in-one', get_bloginfo('stylesheet_directory').'/assets/js/all-in-one.min.js', null, null, true);
+
+			/*
+			* jQuery
+			*/
+			wp_register_script('gate-jquery', get_template_directory_uri().'/assets/js/jquery/jquery.min.js', null, null, true);
+			wp_register_script('gate-jquery-mask', get_template_directory_uri().'/assets/js/jquery/jquery.mask.min.js', null, null, true);
+
+			/*
+			* GSAP Files
+			*/
+			wp_register_script('gate-gsap-core', get_template_directory_uri().'/assets/js/gsap/gsap.min.js', null, null, true);
+			wp_register_script('gate-gsap-css-rule', get_template_directory_uri().'/assets/js/gsap/CSSRulePlugin.min.js', null, null, true);
+			wp_register_script('gate-gsap-custom-bounce', get_template_directory_uri().'/assets/js/gsap/CustomBounce.min.js', null, null, true);
+			wp_register_script('gate-gsap-custom-ease', get_template_directory_uri().'/assets/js/gsap/CustomEase.min.js', null, null, true);
+			wp_register_script('gate-gsap-custom-wiggle', get_template_directory_uri().'/assets/js/gsap/CustomWiggle.min.js', null, null, true);
+			wp_register_script('gate-gsap-draggable', get_template_directory_uri().'/assets/js/gsap/Draggable.min.js', null, null, true);
+			wp_register_script('gate-gsap-draw-svg', get_template_directory_uri().'/assets/js/gsap/DrawSVGPlugin.min.js', null, null, true);
+			wp_register_script('gate-gsap-easel', get_template_directory_uri().'/assets/js/gsap/EaselPlugin.min.js', null, null, true);
+			wp_register_script('gate-gsap-ease-pack', get_template_directory_uri().'/assets/js/gsap/EasePack.min.js', null, null, true);
+			wp_register_script('gate-gsap-flip', get_template_directory_uri().'/assets/js/gsap/Flip.min.js', null, null, true);
+			wp_register_script('gate-gsap-gs-dev-tools', get_template_directory_uri().'/assets/js/gsap/GSDevTools.min.js', null, null, true);
+			wp_register_script('gate-gsap-inertia', get_template_directory_uri().'/assets/js/gsap/InertiaPlugin.min.js', null, null, true);
+			wp_register_script('gate-gsap-morph-svg', get_template_directory_uri().'/assets/js/gsap/MorphSVGPlugin.min.js', null, null, true);
+			wp_register_script('gate-gsap-motion-path', get_template_directory_uri().'/assets/js/gsap/MotionPathPlugin.min.js', null, null, true);
+			wp_register_script('gate-gsap-motion-path-helper', get_template_directory_uri().'/assets/js/gsap/MotionPathHelper.min.js', null, null, true);
+			wp_register_script('gate-gsap-observer', get_template_directory_uri().'/assets/js/gsap/Observer.min.js', null, null, true);
+			wp_register_script('gate-gsap-physics-2d', get_template_directory_uri().'/assets/js/gsap/Physics2DPlugin.min.js', null, null, true);
+			wp_register_script('gate-gsap-physics-props', get_template_directory_uri().'/assets/js/gsap/PhysicsPropsPlugin.min.js', null, null, true);
+			wp_register_script('gate-gsap-pixi', get_template_directory_uri().'/assets/js/gsap/PixiPlugin.min.js', null, null, true);
+			wp_register_script('gate-gsap-scramble-text', get_template_directory_uri().'/assets/js/gsap/ScrambleTextPlugin.min.js', null, null, true);
+			wp_register_script('gate-gsap-scroll-smoother', get_template_directory_uri().'/assets/js/gsap/ScrollSmoother.min.js', null, null, true);
+			wp_register_script('gate-gsap-scroll-to', get_template_directory_uri().'/assets/js/gsap/ScrollToPlugin.min.js', null, null, true);
+			wp_register_script('gate-gsap-scroll-trigger', get_template_directory_uri().'/assets/js/gsap/ScrollTrigger.min.js', null, null, true);
+			wp_register_script('gate-gsap-text-split', get_template_directory_uri().'/assets/js/gsap/SplitText.min.js', null, null, true);
+			wp_register_script('gate-gsap-text', get_template_directory_uri().'/assets/js/gsap/TextPlugin.min.js', null, null, true);
+
+			/*
+			* Gate Files
+			*/
+			wp_register_script('gate-extender', get_template_directory_uri() .'/assets/js/gate.min.js', null, null, true);
 			wp_enqueue_script('gate-main', get_bloginfo('stylesheet_directory') .'/assets/js/main.min.js', null, null, true);
 
 		}, 10);
