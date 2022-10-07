@@ -1,6 +1,6 @@
 > :warning: **This is only the detached part you download with Gate Project**
 
-**Gate version:** 1.1.0
+**Gate version:** 1.1.2
 
 **Gate Project:** https://github.com/sam-tremblay/Gate
 
