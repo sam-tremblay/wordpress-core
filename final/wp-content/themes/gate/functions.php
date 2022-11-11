@@ -2,7 +2,7 @@
 
 if (!defined('ABSPATH')) exit;
 
-if (!defined('GT_VERSION')) define('GT_VERSION', '1.1.3');
+if (!defined('GT_VERSION')) define('GT_VERSION', '1.1.4');
 
 class gc{
 
@@ -26,6 +26,7 @@ class gc{
 			*/
 			wp_dequeue_style('wp-block-library');
 			wp_dequeue_style('global-styles');
+			wp_dequeue_style('classic-theme-styles');
 			
 
 			/*
