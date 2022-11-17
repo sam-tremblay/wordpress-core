@@ -17,7 +17,7 @@ while(have_posts()) : the_post();
 	$roleArray = $user->roles;
 	$userRole = isset($roleArray[0]) ? $roleArray[0] : '';
 	
-	if(class_exists('isPluginCORE') && gc::field('is_plugin_in_construction') === 'activate' && !in_array($userRole, ['administrator']))
+	if(gc::field('maintenance') === 'enable' && !in_array($userRole, ['administrator']))
 		$include = $coming_path;
 
 
