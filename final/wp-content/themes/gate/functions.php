@@ -2,7 +2,7 @@
 
 if (!defined('ABSPATH')) exit;
 
-if (!defined('GT_VERSION')) define('GT_VERSION', '2.0');
+if (!defined('GT_VERSION')) define('GT_VERSION', '2.0.1');
 
 class gc{
 
@@ -4924,48 +4924,52 @@ class gc{
 				if($post_types){
 					foreach ($post_types as $pt) {
 						$__post_types[] = [
-							'param' => 'post_type',
-							'operator' => '==',
-							'value' => $pt,
+							[
+								'param' => 'post_type',
+								'operator' => '==',
+								'value' => $pt,
+							]
 						];
 					}
 				}
+
+				$__post_types[] = [
+					[
+						'param' => 'post_type',
+						'operator' => '==',
+						'value' => 'post',
+					]
+				];
+
+				$__post_types[] = [
+					[
+						'param' => 'post_type',
+						'operator' => '==',
+						'value' => 'page',
+					]
+				];
+
+				$__post_types[] = [
+					[
+						'param' => 'taxonomy',
+						'operator' => '==',
+						'value' => 'all',
+					]
+				];
+
+				$__post_types[] = [
+					[
+						'param' => 'user_form',
+						'operator' => '==',
+						'value' => 'all',
+					]
+				];
 
 				acf_add_local_field_group([
 					'key' => 'group_6371c77346f80',
 					'title' => __('SEO'),
 					'fields' => [],
-					'location' => [
-						$__post_types,
-						[
-							[
-								'param' => 'post_type',
-								'operator' => '==',
-								'value' => 'post',
-							],
-						],
-						[
-							[
-								'param' => 'post_type',
-								'operator' => '==',
-								'value' => 'page',
-							],
-						],
-						[
-							[
-								'param' => 'taxonomy',
-								'operator' => '==',
-								'value' => 'all',
-							],
-						],
-						[
-							[
-								'param' => 'user_form',
-								'operator' => '==',
-								'value' => 'all',
-							],
-						]
-					],
+					'location' => $__post_types,
 					'menu_order' => 0,
 					'position' => 'normal',
 					'style' => 'default',
